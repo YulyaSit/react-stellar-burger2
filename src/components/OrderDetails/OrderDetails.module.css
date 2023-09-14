@@ -1,0 +1,22 @@
+.container {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.identifier {
+    margin-top: 32px;
+}
+
+.wait {
+    color: #8585AD;
+    margin-bottom: 120px;
+}
+
+.number {
+    filter: drop-shadow(0 4px 32px rgba(51, 51, 255, 0.5)) drop-shadow(0 0 8px rgba(51, 51, 255, 0.25)) drop-shadow(0 0 16px rgba(51, 51, 255, 0.25));
+}
