@@ -6,7 +6,9 @@ import PropTypes, { func } from "prop-types";
 import { ingredientPropType } from '../../utils/prop-types';
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
-function BurgerIngredients({ ingredientsBurger }) {
+import { IngredientsContext } from '../../services/ingredientsContext';
+function BurgerIngredients() {
+    const {ingredientsBurger} = React.useContext(IngredientsContext)
     const [openIngredient, setOpenIngredients] = React.useState(false)
     const [infoIngredient, setInfoIngredient] = React.useState(null)
     const [current, setCurrent] = React.useState('one')

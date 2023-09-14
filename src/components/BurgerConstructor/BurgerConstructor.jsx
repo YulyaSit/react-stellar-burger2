@@ -1,23 +1,51 @@
 import constructorStyles from './BurgerConstructor.module.css'
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { ingredientPropType } from '../../utils/prop-types'
 import PropTypes, { func } from "prop-types";
 import OrderDetails from '../OrderDetails/OrderDetails';
 import Modal from '../Modal/Modal';
+import { IngredientsContext, OrderNumberContext } from '../../services/ingredientsContext';
+import { postOrderDetailsNumber } from '../../utils/api/api';
 BurgerConstructor.propTypes = {
-    element: PropTypes.arrayOf(ingredientPropType.isRequired)
+    ingredientsBurger: PropTypes.arrayOf(ingredientPropType.isRequired)
 }
-function BurgerConstructor({ element }) {
-    const buns = React.useMemo(() => element.length > 0 && element.find((m) => m.type === "bun"), [element])
+function BurgerConstructor() {
+    const { ingredientsBurger } = React.useContext(IngredientsContext)
+    const buns = React.useMemo(() => ingredientsBurger.length > 0 && ingredientsBurger.find((m) => m.type === "bun"), [ingredientsBurger])
+    /*console.log(buns)*/
+    const saucesFillingsIngredients = React.useMemo(() => ingredientsBurger.filter((m) => m.type !== 'bun'), [ingredientsBurger])
+    /* console.log(saucesFillingsIngredients)*/
     const [active, setActive] = React.useState(false);
+
+    const [orderNumber, setOrderNumber] = React.useState('')
+
     const popupClose = () => {
         setActive(false)
     }
 
-    const  popupOpen = () => {
+    const popupOpen = () => {
         setActive(true)
+        callOrderFetch()
     }
+
+    const arrayOrderIngredients = React.useMemo(() => {
+        return ingredientsBurger.map((m) => m._id)
+    }, [ingredientsBurger])
+
+    console.log(arrayOrderIngredients)
+
+    function callOrderFetch() {
+        postOrderDetailsNumber(arrayOrderIngredients)
+            .then((result) => { setOrderNumber(result.order.number.toString()) })
+            .catch(err => console.log(err));
+    }
+    const totalPrice = React.useMemo(() => {
+        const priceIngredients = saucesFillingsIngredients.reduce((acc, item) => {
+            return acc + item.price;
+        }, 0);
+        return priceIngredients + buns.price * 2;
+    }, [saucesFillingsIngredients, buns]);
     return (
         <section className={`${constructorStyles.container}`}>
             <div className={`${constructorStyles.content} pl-4 pr-4 pb-5 pt-5`}>
@@ -29,7 +57,7 @@ function BurgerConstructor({ element }) {
                     thumbnail={buns.image}
                 /></div>
                 <ul className={`${constructorStyles.list}  custom-scroll`}>
-                    {element.map((item) => {
+                    {ingredientsBurger.map((item) => {
                         return item.type !== "bun" && (
                             <li key={item._id} className={constructorStyles.item}>
                                 <DragIcon type="primary" />
@@ -51,14 +79,16 @@ function BurgerConstructor({ element }) {
                 </div>
             </div>
             <div className={constructorStyles.items}>
-                <span className={`${constructorStyles.price} text text_type_main-large mr-2`}>18743<CurrencyIcon type="primary" /></span>
+                <span className={`${constructorStyles.price} text text_type_main-large mr-2`}>{totalPrice}<CurrencyIcon type="primary" /></span>
                 <Button onClick={popupOpen} htmlType="button" type="primary" size="large">
                     Оформить заказ
                 </Button>
             </div>
-            {active && (<Modal close={popupClose}>
-                <OrderDetails  />
-            </Modal>)}
+            <OrderNumberContext.Provider value={{ orderNumber, setOrderNumber }}>
+                {active && (<Modal close={popupClose}>
+                    <OrderDetails />
+                </Modal>)}
+            </OrderNumberContext.Provider>
         </section>
     )
 }

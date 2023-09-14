@@ -12,7 +12,7 @@ function IngredientDetails({ options }) {
         <>
             <div className={ingredientStyles.container}>
                 <img src={options.image} className={ingredientStyles.image} alt={options.name} />
-                <p className={`${ingredientStyles.subtitle} mt-4 text text_type_main-default`}>Биокотлета из марсианской Магнолии</p>
+                <p className={`${ingredientStyles.subtitle} mt-4 text text_type_main-default`}>{options.name}</p>
                 <ul className={`${ingredientStyles.items} text_color_inactive`}>
                     <li className={`${ingredientStyles.item} ${ingredientStyles.item_size_big} text text_type_main-small`}>
                         <span>Калории, ккал</span>

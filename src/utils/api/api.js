@@ -1,5 +1,5 @@
 const url = "https://norma.nomoreparties.space/api/ingredients"
-
+const urlOrderDetails = 'https://norma.nomoreparties.space/api/orders'
 
 export const getIngredients = () => {
     return fetch(`${url}`, {
@@ -10,10 +10,31 @@ export const getIngredients = () => {
     })
         .then((res) => {
             if (res.ok) {
-              return res.json()
+                return res.json()
             }
             return Promise.reject(`Ошибка: ${res.status}`)
-          })
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
+
+export const postOrderDetailsNumber = (array) => {
+    return fetch(`${urlOrderDetails}`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            "ingredients": array
+        })
+    })
+        .then((res) => {
+            if (res.ok) {
+                return res.json()
+            }
+            return Promise.reject(`Ошибка: ${res.status}`)
+        })
         .catch((err) => {
             console.log(err)
         })
