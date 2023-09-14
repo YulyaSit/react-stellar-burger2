@@ -1,0 +1,50 @@
+.container {
+    margin-top: 100px;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    height: 696px; 
+    display: flex;
+    flex-direction: column;
+     gap: 16px;
+     box-sizing: border-box;
+     align-items: self-end;
+
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+}
+
+.component {
+    margin-left: 34px;
+    margin-right: 18px;
+}
+
+.items {
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    justify-content: right;
+    margin-right: 30px;
+}
+
+.price {
+    margin-right: 40px;
+}
