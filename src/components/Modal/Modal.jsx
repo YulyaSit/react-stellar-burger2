@@ -5,7 +5,7 @@ import React from 'react'
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from 'prop-types'
 Modal.propTypes = ({
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.any.isRequired,
   close: PropTypes.func.isRequired
 })

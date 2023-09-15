@@ -1,10 +1,11 @@
-import stylesApp from "./app.module.css";
+import stylesApp from "./App.module.css";
 import AppHeader from "../AppHeader/AppHeader";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import React from 'react'
 import { getIngredients } from '../../utils/api/api.js'
 import { IngredientsContext } from '../../services/ingredientsContext.jsx'
+
 
 function App() {
   const [ingredientsBurger, setIngredientsBurger] = React.useState([])

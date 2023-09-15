@@ -1,9 +1,7 @@
 import ingredientsStyle from './BurgerIngredients.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
-import IngredientsList from '../IngredientsList/IngredientsList'
-import PropTypes, { func } from "prop-types";
-import { ingredientPropType } from '../../utils/prop-types';
+import Ingredient from '../Ingredient/Ingredient'
 import Modal from '../Modal/Modal'
 import IngredientDetails from '../IngredientDetails/IngredientDetails';
 import { IngredientsContext } from '../../services/ingredientsContext';
@@ -45,7 +43,7 @@ function BurgerIngredients() {
                     <ul className={ingredientsStyle.list}>
                         {buns.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -53,7 +51,7 @@ function BurgerIngredients() {
                     <ul className={ingredientsStyle.list}>
                         {sauces.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -61,7 +59,7 @@ function BurgerIngredients() {
                     <ul className={ingredientsStyle.list}>
                         {fillings.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -74,7 +72,4 @@ function BurgerIngredients() {
     )
 }
 
-BurgerIngredients.propTypes = {
-    ingredientsBurger: PropTypes.arrayOf(ingredientPropType)
-}
 export default BurgerIngredients
