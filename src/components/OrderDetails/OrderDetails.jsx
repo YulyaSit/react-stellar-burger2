@@ -1,5 +1,5 @@
 import React from 'react'
-import modalDetailsStyles from './OrderDetails.module.css'
+import modalDetailsStyles from './orderDetails.module.css'
 import doneImage from '../../images/done.svg'
 import { OrderNumberContext } from '../../services/ingredientsContext'
 function OrderDetails() {

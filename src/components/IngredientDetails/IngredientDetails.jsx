@@ -1,5 +1,5 @@
 
-import ingredientStyles from './IngredientDetails.module.css'
+import ingredientStyles from './ingredientDetails.module.css'
 import { ingredientsDetailsPopupPropType } from '../../utils/prop-types'
 import PropTypes from 'prop-types'
 IngredientDetails.propTypes = {

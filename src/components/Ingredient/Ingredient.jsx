@@ -1,4 +1,4 @@
-import ingredientsStyle from '../BurgerIngredients/BurgerIngredients.module.css'
+import ingredientsStyle from '../burgerIngredients/burgerIngredients.module.css'
 import { CurrencyIcon, Counter } from '@ya.praktikum/react-developer-burger-ui-components'
 import { ingredientsItemListPropType } from '../../utils/prop-types';
 

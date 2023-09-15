@@ -1,7 +1,7 @@
-import stylesApp from "./App.module.css";
-import AppHeader from "../AppHeader/AppHeader";
-import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
-import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
+import stylesApp from "./app.module.css";
+import AppHeader from "../appHeader/appHeader";
+import BurgerIngredients from "../burgerIngredients/burgerIngredients";
+import BurgerConstructor from "../burgerConstructor/burgerConstructor";
 import React from 'react'
 import { getIngredients } from '../../utils/api/api.js'
 import { IngredientsContext } from '../../services/ingredientsContext.jsx'

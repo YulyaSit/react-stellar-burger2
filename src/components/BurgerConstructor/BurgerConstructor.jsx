@@ -1,10 +1,10 @@
-import constructorStyles from './BurgerConstructor.module.css'
+import constructorStyles from './burgerConstructor.module.css'
 import { ConstructorElement, DragIcon, Button, CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components'
 import React, { useMemo } from 'react'
 import { ingredientPropType } from '../../utils/prop-types'
 import PropTypes, { func } from "prop-types";
-import OrderDetails from '../OrderDetails/OrderDetails';
-import Modal from '../Modal/Modal';
+import OrderDetails from '../orderDetails/orderDetails';
+import Modal from '../modal/modal';
 import { IngredientsContext, OrderNumberContext } from '../../services/ingredientsContext';
 import { postOrderDetailsNumber } from '../../utils/api/api';
 BurgerConstructor.propTypes = {

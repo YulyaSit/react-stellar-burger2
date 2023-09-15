@@ -1,9 +1,9 @@
-import ingredientsStyle from './BurgerIngredients.module.css'
+import ingredientsStyle from './burgerIngredients.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
-import Ingredient from '../Ingredient/Ingredient'
-import Modal from '../Modal/Modal'
-import IngredientDetails from '../IngredientDetails/IngredientDetails';
+import Ingredient from '../ingredient/ingredient'
+import Modal from '../modal/modal'
+import IngredientDetails from '../ingredientDetails/ingredientDetails';
 import { IngredientsContext } from '../../services/ingredientsContext';
 function BurgerIngredients() {
     const {ingredientsBurger} = React.useContext(IngredientsContext)
