@@ -1,12 +1,12 @@
-import ingredientsStyle from './BurgerIngredients.module.css'
+import ingredientsStyle from './burgerIngredients.module.css'
 import { Tab } from '@ya.praktikum/react-developer-burger-ui-components'
 import React from 'react'
-import IngredientsList from '../IngredientsList/IngredientsList'
-import PropTypes, { func } from "prop-types";
-import { ingredientPropType } from '../../utils/prop-types';
-import Modal from '../Modal/Modal'
-import IngredientDetails from '../IngredientDetails/IngredientDetails';
-function BurgerIngredients({ ingredientsBurger }) {
+import Ingredient from '../ingredient/ingredient'
+import Modal from '../modal/modal'
+import IngredientDetails from '../ingredientDetails/ingredientDetails';
+import { IngredientsContext } from '../../services/ingredientsContext';
+function BurgerIngredients() {
+    const {ingredientsBurger} = React.useContext(IngredientsContext)
     const [openIngredient, setOpenIngredients] = React.useState(false)
     const [infoIngredient, setInfoIngredient] = React.useState(null)
     const [current, setCurrent] = React.useState('one')
@@ -43,7 +43,7 @@ function BurgerIngredients({ ingredientsBurger }) {
                     <ul className={ingredientsStyle.list}>
                         {buns.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -51,7 +51,7 @@ function BurgerIngredients({ ingredientsBurger }) {
                     <ul className={ingredientsStyle.list}>
                         {sauces.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -59,7 +59,7 @@ function BurgerIngredients({ ingredientsBurger }) {
                     <ul className={ingredientsStyle.list}>
                         {fillings.map((ingredientsBurger) => (
                             <li key={ingredientsBurger._id}>
-                                <IngredientsList item={ingredientsBurger} openIngredient={openPopupIngrredient} />
+                                <Ingredient item={ingredientsBurger} openIngredient={openPopupIngrredient} />
                             </li>
                         ))}
                     </ul>
@@ -72,7 +72,4 @@ function BurgerIngredients({ ingredientsBurger }) {
     )
 }
 
-BurgerIngredients.propTypes = {
-    ingredientsBurger: PropTypes.arrayOf(ingredientPropType)
-}
 export default BurgerIngredients

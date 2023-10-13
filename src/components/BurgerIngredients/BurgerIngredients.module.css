@@ -57,6 +57,7 @@
     height: 48px;
     margin-top: 8px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .price {

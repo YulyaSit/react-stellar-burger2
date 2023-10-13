@@ -1,11 +1,11 @@
-import ModalOverlay from "../ModalOverlay/ModalOverlay";
-import stylesModal from './Modal.module.css'
+import ModalOverlay from "../modalOverlay/modalOverlay";
+import stylesModal from './modal.module.css'
 import ReactDOM from "react-dom";
 import React from 'react'
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from 'prop-types'
 Modal.propTypes = ({
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.any.isRequired,
   close: PropTypes.func.isRequired
 })
