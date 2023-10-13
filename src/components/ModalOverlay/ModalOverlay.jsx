@@ -1,5 +1,5 @@
 import React from 'react'
-import overlayStyles from './modalOverlay.module.css'
+import overlayStyles from './ModalOverlay.module.css'
 import PropTypes from 'prop-types'
 ModalOverlay.propTypes = ({
     closeOverlay: PropTypes.func.isRequired
