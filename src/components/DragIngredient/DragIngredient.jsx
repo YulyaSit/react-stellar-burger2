@@ -5,6 +5,9 @@ import { useDrag, useDrop } from "react-dnd";
 import { ConstructorElement, DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useRef } from 'react'
 import constructorStyles from '../BurgerConstructor/BurgerConstructor.module.css'
+import { ingredientsItemListPropType } from "../../utils/prop-types";
+import { func } from "prop-types";
+
 export const DragIngredientBurger = ({ element, moveIngredientBurger }) => {
     const dispatch = useDispatch()
     const { ingredients } = useSelector(store => store.burgerIngredientsConstructor);
@@ -68,3 +71,8 @@ export const DragIngredientBurger = ({ element, moveIngredientBurger }) => {
     )
 }
 
+
+DragIngredientBurger.propTypes = {
+    element: ingredientsItemListPropType,
+    moveIngredientBurger: func
+  };

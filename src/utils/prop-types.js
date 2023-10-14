@@ -14,6 +14,7 @@ export const ingredientPropType = PropTypes.shape({
 });
 
 
+
 export const ingredientsItemListPropType = PropTypes.shape({
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

@@ -23,6 +23,8 @@ export const ADD_BUN_BURGER = 'ADD_BUN_BURGER'
 
 export const DELETE_INGREDIENT_BURGER = 'DELETE_INGREDIENT_BURGER';
 export const MOVE_INGREDIENT_BURGER = 'MOVE_INGREDIENT_BURGER'
+export const CLEAR_BUN_CONSTRUCTOR = 'CLEAR_BUN_CONSTRUCTOR'
+export const CLEAR_INGREDIENT_CONSTRUCTOR = 'CLEAR_INGREDIENT_CONSTRUCTOR'
 
 export function getIngredientsItems() {
     return function(dispatch) {

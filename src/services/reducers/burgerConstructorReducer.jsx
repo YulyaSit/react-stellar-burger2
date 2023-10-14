@@ -1,5 +1,6 @@
-import {NULL_BUN_CONSTRUCTOR, NULL_INGREDIENTS_CONSTRUCTOR, OPEN_POPUP_ORDER_DETAILS, CLOSE_POPUP_ORDER_DETAILS, ADD_BUN_BURGER, ADD_INGREDIENT_BURGER, DELETE_INGREDIENT_BURGER, MOVE_INGREDIENT_BURGER } from "../actions/actions"
+import {CLEAR_BUN_CONSTRUCTOR, CLEAR_INGREDIENT_CONSTRUCTOR, OPEN_POPUP_ORDER_DETAILS, CLOSE_POPUP_ORDER_DETAILS, ADD_BUN_BURGER, ADD_INGREDIENT_BURGER, DELETE_INGREDIENT_BURGER, MOVE_INGREDIENT_BURGER } from "../actions/actions"
 import update from 'immutability-helper'
+import {v4 as uuidv4 } from "uuid";
 const InitialState = {
     popupIsActive: false,
     bun: null,
@@ -50,6 +51,18 @@ export const burgerIngredientsConstructorReducer = (state = InitialState, action
               ingredients: ingredientsUpdate
             }
           }
+          case CLEAR_BUN_CONSTRUCTOR: {
+            return {
+              ...state,
+              bun: null
+            }
+          }
+          case CLEAR_INGREDIENT_CONSTRUCTOR: {
+            return {
+              ...state,
+              ingredients: []
+            }
+          }
         default: {
             return state
         }
@@ -63,11 +76,13 @@ export function addBunBurger(item) {
     }
   }
   
-  export function addIngredientBurger(item, keyUuid) {
+  export function addIngredientBurger(item) {
     return {
       type: ADD_INGREDIENT_BURGER,
-      ingredients: item,
-      key: keyUuid
+      ingredients: {
+        ...item,
+        uniqueId: uuidv4()
+      }
     }
   }
   

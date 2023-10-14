@@ -5,7 +5,7 @@ import { ingredientPropType } from '../../utils/prop-types'
 import PropTypes, { func } from "prop-types";
 import OrderDetails from '../OrderDetails/OrderDetails';
 import Modal from '../Modal/Modal';
-import { OPEN_POPUP_ORDER_DETAILS, CLOSE_POPUP_ORDER_DETAILS, postOrderNumber, DELETE_INGREDIENT_BURGER } from '../../services/actions/actions';
+import { OPEN_POPUP_ORDER_DETAILS, CLOSE_POPUP_ORDER_DETAILS, postOrderNumber, DELETE_INGREDIENT_BURGER, CLEAR_BUN_CONSTRUCTOR, CLEAR_INGREDIENT_CONSTRUCTOR } from '../../services/actions/actions';
 import { useSelector, useDispatch } from 'react-redux';
 import { useDrop } from 'react-dnd';
 import { addBunBurger, addIngredientBurger } from '../../services/reducers/burgerConstructorReducer';
@@ -41,6 +41,12 @@ function BurgerConstructor() {
     const popupClose = () => {
         dispatch({
             type: CLOSE_POPUP_ORDER_DETAILS
+        })
+        dispatch({
+            type: CLEAR_BUN_CONSTRUCTOR
+        })
+        dispatch({
+            type: CLEAR_INGREDIENT_CONSTRUCTOR
         })
     }
     const ingredientsBurger = useMemo(
@@ -88,8 +94,8 @@ function BurgerConstructor() {
                         element={bun}
                     />)}</div>
                 <ul className={`${constructorStyles.list}  custom-scroll`}>
-                    {ingredients.map((item, key) => (
-                        <li key={key}>
+                    {ingredients.map((item) => (
+                        <li key={item.uniqueId}>
                             <DragIngredientBurger
                                 element={item}
                                 moveIngredientBurger={moveIngredientBurger}
@@ -109,9 +115,11 @@ function BurgerConstructor() {
             </div>
             <div className={constructorStyles.items}>
                 <span className={`${constructorStyles.price} text text_type_main-large mr-2`}>{totalPrice}<CurrencyIcon type="primary" /></span>
-                <Button onClick={popupOpen} htmlType="button" type="primary" size="large">
+                {bun ? (<Button onClick={popupOpen} htmlType="button" type="primary" size="large">
                     Оформить заказ
-                </Button>
+                </Button>) : (<Button disabled={true} onClick={popupOpen} htmlType="button" type="primary" size="large">
+                    Оформить заказ
+                </Button>)}
             </div>
             {popupIsActive && (<Modal close={popupClose}>
                 <OrderDetails />
