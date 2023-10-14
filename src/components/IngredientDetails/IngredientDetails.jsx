@@ -1,13 +1,12 @@
 
-import ingredientStyles from './ingredientDetails.module.css'
+import ingredientStyles from './IngredientDetails.module.css'
 import { ingredientsDetailsPopupPropType } from '../../utils/prop-types'
 import PropTypes from 'prop-types'
-IngredientDetails.propTypes = {
-    options: ingredientsDetailsPopupPropType.isRequired
-}
+import { useSelector } from 'react-redux'
 
 
-function IngredientDetails({ options }) {
+function IngredientDetails() {
+    const {options} = useSelector(store => store.ingredientDetails)
     return (
         <div className={ingredientStyles.container}>
             <img src={options.image} className={ingredientStyles.image} alt={options.name} />
